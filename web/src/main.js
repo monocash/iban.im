@@ -4,6 +4,7 @@ import App from "./App";
 import router from './router';
 import store from './store'
 import axios from 'axios'
+import { trackRouter,VueGtag } from "vue-gtag-next";
 
 Vue.config.productionTip = false;
 
@@ -24,6 +25,11 @@ axios.interceptors.response.use(
 import VueClipboard from 'vue-clipboard2'
 Vue.use(VueClipboard)
 
+Vue.use(VueGtag, {
+    property: {
+        id: "G-2TY5N6F8JR"
+      }
+  });
 
 new Vue({
     vuetify,
@@ -38,3 +44,5 @@ new Vue({
         // }
     }
 }).$mount('#app');
+
+trackRouter(router);

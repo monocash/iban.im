@@ -110,6 +110,12 @@
             onCopy() {
                 // TODO: can be added alert library or something
                 alert('Iban was copied to clipboard!')
+
+                this.$gtag.event('copy', {
+                    'event_category' : 'action',
+                    'event_label' : 'copy'
+                })
+
             },
             onError() {
                 alert('Something went wrong!')

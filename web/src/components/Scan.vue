@@ -69,6 +69,7 @@ export default {
       } = await worker.recognize(iban_img);
       this.scanning = false;
       console.log(text);
+      this.track();
       this.ibanRaw = text;
       text = text.replace(/ /g, '')
       text = text.match(
@@ -77,6 +78,12 @@ export default {
       if(text.length > 0) {
         this.iban = text[0];
       }
+    },
+    track () {
+      this.$gtag.event('scan', {
+        'event_category' : 'action',
+        'event_label' : 'scan'
+      })
     },
     onFileChange(e) {
       const file = e.target.files[0];
